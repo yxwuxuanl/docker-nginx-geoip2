@@ -28,6 +28,6 @@ jobs:
           context: .
           file: ./alpine/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/nginx-geoip2:1.25-alpine
-          build-args: NGINX_VERSION=1.25
+          tags: ghcr.io/${{ github.repository_owner }}/nginx-geoip2:1.25.5-alpine
+          build-args: NGINX_VERSION=1.25.5
           platforms: linux/amd64,linux/arm64
