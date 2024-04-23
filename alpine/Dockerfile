@@ -31,7 +31,9 @@ RUN cd /opt \
 FROM nginx:$NGINX_VERSION-alpine
 
 COPY --from=0 /opt/nginx/objs/ngx_http_geoip2_module.so /usr/lib/nginx/modules
+COPY --from=0 /opt/nginx/objs/ngx_stream_geoip2_module.so /usr/lib/nginx/modules
 
 RUN apk --update --no-cache add libmaxminddb \
     && chmod -R 644 /usr/lib/nginx/modules/ngx_http_geoip2_module.so \
+    && chmod -R 644 /usr/lib/nginx/modules/ngx_stream_geoip2_module.so \
     && sed -i '1iload_module \/usr\/lib\/nginx\/modules\/ngx_http_geoip2_module.so;' /etc/nginx/nginx.conf
